@@ -1,16 +1,16 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame\Games\War;
+namespace Bnowak\CardGame\Games\War;
 
-use Bnowak90\CardGame\Card;
-use Bnowak90\CardGame\CardCollection;
-use Bnowak90\CardGame\FigureInterface;
-use Bnowak90\CardGame\GameResultInterface;
-use Bnowak90\CardGame\Games\AbstractGame;
-use Bnowak90\CardGame\Player;
-use Bnowak90\CardGame\RoundResultInterface;
-use Bnowak90\CardGame\SuitInterface;
+use Bnowak\CardGame\Card;
+use Bnowak\CardGame\CardCollection;
+use Bnowak\CardGame\FigureInterface;
+use Bnowak\CardGame\GameResultInterface;
+use Bnowak\CardGame\Games\AbstractGame;
+use Bnowak\CardGame\Player;
+use Bnowak\CardGame\RoundResultInterface;
+use Bnowak\CardGame\SuitInterface;
 
 /**
  * War game implementation

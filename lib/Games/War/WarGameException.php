@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame\Games\War;
+namespace Bnowak\CardGame\Games\War;
 
-use Bnowak90\CardGame\Exception\AbstractGameException;
+use Bnowak\CardGame\Exception\AbstractGameException;
 
 /**
  * Exception related to errors of WarGame object

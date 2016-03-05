@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame\Exception;
+namespace Bnowak\CardGame\Exception;
 
-use Bnowak90\CardGame\Card;
-use Bnowak90\CardGame\Player;
+use Bnowak\CardGame\Card;
+use Bnowak\CardGame\Player;
 use Exception;
 
 /**

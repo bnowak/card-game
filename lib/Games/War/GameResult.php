@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame\Games\War;
+namespace Bnowak\CardGame\Games\War;
 
-use Bnowak90\CardGame\GameResultInterface;
+use Bnowak\CardGame\GameResultInterface;
 
 /**
  * GameResult

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame;
+namespace Bnowak\CardGame;
 
-use Bnowak90\CardGame\Exception\GameTableException;
+use Bnowak\CardGame\Exception\GameTableException;
 
 /**
  * Object of game table. Players can put or get cards on it or in pile.

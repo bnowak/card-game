@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame;
+namespace Bnowak\CardGame;
 
 use ArrayIterator;
-use Bnowak90\CardGame\Exception\CardCollectionException;
+use Bnowak\CardGame\Exception\CardCollectionException;
 use Countable;
 use IteratorAggregate;
 

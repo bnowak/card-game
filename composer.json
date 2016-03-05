@@ -1,5 +1,5 @@
 {
-    "name": "bnowak90/card-game",
+    "name": "bnowak/card-game",
     "type": "library",
     "description": "Card game library in PHP7",
     "keywords": ["cards", "game", "card game"],
@@ -11,6 +11,6 @@
         "php": "~7.0"
     },
     "autoload": {
-        "psr-4": { "Bnowak90\\CardGame\\": "lib/" }
+        "psr-4": { "Bnowak\\CardGame\\": "lib/" }
     }
 }

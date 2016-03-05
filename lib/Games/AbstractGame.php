@@ -1,15 +1,15 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame\Games;
+namespace Bnowak\CardGame\Games;
 
-use Bnowak90\CardGame\Card;
-use Bnowak90\CardGame\CardCollection;
-use Bnowak90\CardGame\GameTable;
-use Bnowak90\CardGame\Exception\AbstractGameException;
-use Bnowak90\CardGame\GameResultInterface;
-use Bnowak90\CardGame\Player;
-use Bnowak90\CardGame\RoundResultInterface;
+use Bnowak\CardGame\Card;
+use Bnowak\CardGame\CardCollection;
+use Bnowak\CardGame\GameTable;
+use Bnowak\CardGame\Exception\AbstractGameException;
+use Bnowak\CardGame\GameResultInterface;
+use Bnowak\CardGame\Player;
+use Bnowak\CardGame\RoundResultInterface;
 
 /**
  * Abstract of Game in cards. Every implemented games must inherit from this class.

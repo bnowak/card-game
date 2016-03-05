@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Bnowak90\CardGame;
+namespace Bnowak\CardGame;
 
 /**
  * RoundResultInterface
