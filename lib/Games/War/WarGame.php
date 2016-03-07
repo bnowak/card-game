@@ -53,8 +53,9 @@ class WarGame extends AbstractGame
         $players = $this->getPlayers();
         $firstPlayer = reset($players);
         $player = reset($players);
-        $lastDealCondition = (count($this->deck) <= count($players) && $player !== $firstPlayer);
-        while (count($this->deck) > count($players) || $lastDealCondition) {
+        while (count($this->deck) > count($players)
+            || (count($this->deck) <= count($players) && $player !== $firstPlayer)
+        ) {
             $player->getCards()->append($this->deck->collectFirst());
             $player = next($players) ? current($players) : reset($players);
         }
