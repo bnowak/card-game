@@ -17,6 +17,28 @@ use PHPUnit_Framework_TestCase;
 class CardTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @dataProvider constructSuccessProvider
+     */
+    public function testConstructSuccess(string $figure, string $suit = null)
+    {
+        $this->assertInstanceOf(Card::class, new Card($figure, $suit));
+    }
+    
+    /**
+     * @return array
+     */
+    public static function constructSuccessProvider() : array
+    {
+        return array(
+            array(FigureInterface::FIGURE_2, SuitInterface::SUIT_HEART, true),
+            array(FigureInterface::FIGURE_10, SuitInterface::SUIT_DIAMOND, true),
+            array(FigureInterface::FIGURE_JACK, SuitInterface::SUIT_CLUB, false),
+            array(FigureInterface::FIGURE_ACE, SuitInterface::SUIT_SPADE, false),
+            array(FigureInterface::FIGURE_JOKER),
+        );
+    }
+    
+    /**
      * @dataProvider constructFailProvider
      */
     public function testConstructFail(CardException $expectedException, string $figure = null, string $suit = null)
@@ -36,6 +58,51 @@ class CardTest extends PHPUnit_Framework_TestCase
             array(CardException::incorrectFigure('notExistedFigure'), 'notExistedFigure', 'notExistedSuit'),
             array(CardException::incorrectSuit('notExistedSuit'), FigureInterface::FIGURE_ACE, 'notExistedSuit'),
             array(CardException::incorrectFigure('notExistedFigure'), 'notExistedFigure', SuitInterface::SUIT_HEART),
+            array(CardException::jokerWithSuit('notExistedSuit'), FigureInterface::FIGURE_JOKER, 'notExistedSuit'),
+            array(
+                CardException::jokerWithSuit(SuitInterface::SUIT_HEART),
+                FigureInterface::FIGURE_JOKER,
+                SuitInterface::SUIT_HEART,
+            ),
         );
+    }
+    
+    /**
+     * @dataProvider constructSuccessProvider
+     */
+    public function testGetSuit(string $figure, string $suit = null)
+    {
+        $card = new Card($figure, $suit);
+        $this->assertSame((string) $suit, $card->getSuit());
+    }
+    
+    /**
+     * @dataProvider constructSuccessProvider
+     */
+    public function testGetFigure(string $figure, string $suit = null)
+    {
+        $card = new Card($figure, $suit);
+        $this->assertSame((string) $figure, $card->getFigure());
+    }
+    
+    /**
+     * @dataProvider constructSuccessProvider
+     */
+    public function testVisible(string $figure, string $suit = null, bool $isVisible = false)
+    {
+        $card = new Card($figure, $suit);
+        $card->setVisible($isVisible);
+        $this->assertSame($isVisible, $card->isVisible());
+    }
+    
+    /**
+     * @dataProvider constructSuccessProvider
+     */
+    public function testToString(string $figure, string $suit = null)
+    {
+        $color = array_key_exists($suit, SuitInterface::SUIT_COLOR) ? SuitInterface::SUIT_COLOR[$suit] : 'black';
+        $card = new Card($figure, $suit);
+        $this->assertContains($figure.$suit, $card->__toString());
+        $this->assertContains("color: $color", $card->__toString());
     }
 }

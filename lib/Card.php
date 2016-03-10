@@ -101,7 +101,9 @@ class Card implements SuitInterface, FigureInterface
      */
     public function __toString() : string
     {
-        $color = SuitInterface::SUIT_COLOR[$this->getSuit()];
+        $color = array_key_exists($this->getSuit(), SuitInterface::SUIT_COLOR)
+                ? SuitInterface::SUIT_COLOR[$this->getSuit()]
+                : 'black';
         return "<span style='color: $color'>{$this->figure}{$this->suit}</span>";
     }
     

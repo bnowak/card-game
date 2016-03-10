@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Bnowak\CardGame\Tests;
 
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     // dependencies were installed via composer - this is the main project
