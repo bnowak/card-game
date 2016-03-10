@@ -42,4 +42,18 @@ class CardException extends Exception
             "Corrects are: " . implode(', ', FigureInterface::FIGURES)
         );
     }
+    
+    /**
+     * Joker with suit message
+     *
+     * @param string $suit
+     * @return CardException
+     */
+    public static function jokerWithSuit(string $suit) : self
+    {
+        return new self(
+            "You can't create joker card with suit $suit. " .
+            "Suit for joker card must by null or none"
+        );
+    }
 }

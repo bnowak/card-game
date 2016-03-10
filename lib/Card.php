@@ -42,7 +42,11 @@ class Card implements SuitInterface, FigureInterface
     public function __construct(string $figure, string $suit = null)
     {
         static::checkFigureIsCorrect($figure);
-        if ($figure !== self::FIGURE_JOKER) {
+        if ($figure === self::FIGURE_JOKER) {
+            if ($suit !== null) {
+                throw CardException::jokerWithSuit($suit);
+            }
+        } else {
             static::checkSuitIsCorrect($suit);
         }
         
