@@ -105,4 +105,30 @@ class CardTest extends PHPUnit_Framework_TestCase
         $this->assertContains($figure.$suit, $card->__toString());
         $this->assertContains("color: $color", $card->__toString());
     }
+    
+    public function testCheckSuitIsCorrect()
+    {
+        foreach (SuitInterface::SUITS as $suit) {
+            Card::checkSuitIsCorrect($suit);
+            $this->addToAssertionCount(1);
+        }
+        
+        $expectedException = CardException::incorrectSuit('notExistedSuit');
+        $this->expectException(get_class($expectedException));
+        $this->expectExceptionMessage($expectedException->getMessage());
+        Card::checkSuitIsCorrect('notExistedSuit');
+    }
+    
+    public function testCheckFigureIsCorrect()
+    {
+        foreach (FigureInterface::FIGURES as $figure) {
+            Card::checkFigureIsCorrect($figure);
+            $this->addToAssertionCount(1);
+        }
+        
+        $expectedException = CardException::incorrectFigure('notExistedFigure');
+        $this->expectException(get_class($expectedException));
+        $this->expectExceptionMessage($expectedException->getMessage());
+        Card::checkFigureIsCorrect('notExistedFigure');
+    }
 }
