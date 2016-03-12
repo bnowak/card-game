@@ -17,25 +17,11 @@ use PHPUnit_Framework_TestCase;
 class CardTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider constructSuccessProvider
+     * @dataProvider \Bnowak\CardGame\Tests\TestDataProvider::getCardsDataArray
      */
     public function testConstructSuccess(string $figure, string $suit = null)
     {
         $this->assertInstanceOf(Card::class, new Card($figure, $suit));
-    }
-    
-    /**
-     * @return array
-     */
-    public static function constructSuccessProvider() : array
-    {
-        return array(
-            array(FigureInterface::FIGURE_2, SuitInterface::SUIT_HEART, true),
-            array(FigureInterface::FIGURE_10, SuitInterface::SUIT_DIAMOND, true),
-            array(FigureInterface::FIGURE_JACK, SuitInterface::SUIT_CLUB, false),
-            array(FigureInterface::FIGURE_ACE, SuitInterface::SUIT_SPADE, false),
-            array(FigureInterface::FIGURE_JOKER),
-        );
     }
     
     /**
@@ -68,7 +54,7 @@ class CardTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-     * @dataProvider constructSuccessProvider
+     * @dataProvider \Bnowak\CardGame\Tests\TestDataProvider::getCardsDataArray
      */
     public function testGetSuit(string $figure, string $suit = null)
     {
@@ -77,7 +63,7 @@ class CardTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-     * @dataProvider constructSuccessProvider
+     * @dataProvider \Bnowak\CardGame\Tests\TestDataProvider::getCardsDataArray
      */
     public function testGetFigure(string $figure, string $suit = null)
     {
@@ -86,7 +72,7 @@ class CardTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-     * @dataProvider constructSuccessProvider
+     * @dataProvider \Bnowak\CardGame\Tests\TestDataProvider::getCardsDataArray
      */
     public function testVisible(string $figure, string $suit = null, bool $isVisible = false)
     {
@@ -96,7 +82,7 @@ class CardTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-     * @dataProvider constructSuccessProvider
+     * @dataProvider \Bnowak\CardGame\Tests\TestDataProvider::getCardsDataArray
      */
     public function testToString(string $figure, string $suit = null)
     {
