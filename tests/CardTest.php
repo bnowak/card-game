@@ -7,14 +7,13 @@ use Bnowak\CardGame\Card;
 use Bnowak\CardGame\Exception\CardException;
 use Bnowak\CardGame\FigureInterface;
 use Bnowak\CardGame\SuitInterface;
-use PHPUnit_Framework_TestCase;
 
 /**
  * CardTest
  *
  * @author Bartłomiej Nowak <barteknowak90@gmail.com>
  */
-class CardTest extends PHPUnit_Framework_TestCase
+class CardTest extends TestCase
 {
     /**
      * @dataProvider \Bnowak\CardGame\Tests\TestDataProvider::getCardsDataArray
