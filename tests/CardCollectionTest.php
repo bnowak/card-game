@@ -3,8 +3,12 @@ declare(strict_types = 1);
 
 namespace Bnowak\CardGame\Tests;
 
+use ArrayIterator;
 use Bnowak\CardGame\CardCollection;
 use Bnowak\CardGame\Exception\CardCollectionException;
+use Bnowak\CardGame\Exception\CardException;
+use Bnowak\CardGame\FigureInterface;
+use Bnowak\CardGame\SuitInterface;
 use stdClass;
 use TypeError;
 
@@ -249,5 +253,80 @@ class CardCollectionTest extends TestCase
             $this->expectExceptionMessage($expectedException->getMessage());
             $cardCollection->collectLast();
         }
+    }
+    
+    public function testHasCardWithSuit()
+    {
+        $cardCollection = new CardCollection();
+        foreach (SuitInterface::SUITS as $suit) {
+            $this->assertFalse($cardCollection->hasCardWithSuit($suit));
+        }
+        
+        $addedCard = TestDataProvider::getCard2();
+        $cardCollection->append($addedCard);
+        foreach (SuitInterface::SUITS as $suit) {
+            if ($addedCard->getSuit() === $suit) {
+                $this->assertTrue($cardCollection->hasCardWithSuit($suit));
+            } else {
+                $this->assertFalse($cardCollection->hasCardWithSuit($suit));
+            }
+        }
+        
+        $expectedException = CardException::incorrectSuit('notExistedSuit');
+        $this->expectException(get_class($expectedException));
+        $this->expectExceptionMessage($expectedException->getMessage());
+        $cardCollection->hasCardWithSuit('notExistedSuit');
+    }
+    
+    public function testHasCardWithFigure()
+    {
+        $cardCollection = new CardCollection();
+        foreach (FigureInterface::FIGURES as $figure) {
+            $this->assertFalse($cardCollection->hasCardWithFigure($figure));
+        }
+        
+        $addedCard = TestDataProvider::getCard2();
+        $cardCollection->append($addedCard);
+        foreach (FigureInterface::FIGURES as $figure) {
+            if ($addedCard->getFigure() === $figure) {
+                $this->assertTrue($cardCollection->hasCardWithFigure($figure));
+            } else {
+                $this->assertFalse($cardCollection->hasCardWithFigure($figure));
+            }
+        }
+        
+        $expectedException = CardException::incorrectFigure('notExistedFigure');
+        $this->expectException(get_class($expectedException));
+        $this->expectExceptionMessage($expectedException->getMessage());
+        $cardCollection->hasCardWithFigure('notExistedFigure');
+    }
+    
+    public function testSetAllVisible()
+    {
+        $cardCollection = new CardCollection(TestDataProvider::getCardsArray());
+        $cardCollection->setAllVisible(true);
+        foreach ($cardCollection->getAll() as $card) {
+            $this->assertTrue($card->isVisible());
+        }
+        
+        $cardCollection->setAllVisible(false);
+        foreach ($cardCollection->getAll() as $card) {
+            $this->assertFalse($card->isVisible());
+        }
+    }
+    
+    public function testClear()
+    {
+        $cardCollection = new CardCollection(TestDataProvider::getCardsArray());
+        $this->assertNotSame(0, $cardCollection->count());
+        
+        $cardCollection->clear();
+        $this->assertSame(0, $cardCollection->count());
+    }
+    
+    public function testGetIterator()
+    {
+        $cardCollection = new CardCollection();
+        $this->assertInstanceOf(ArrayIterator::class, $cardCollection->getIterator());
     }
 }
