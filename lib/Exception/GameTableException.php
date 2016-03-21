@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Bnowak\CardGame\Exception;
 
 use Bnowak\CardGame\Card;
+use Bnowak\CardGame\Player;
 use Exception;
 
 /**
@@ -32,5 +33,16 @@ class GameTableException extends Exception
     public static function notAllPlayersPlacedCards() : self
     {
         return new self("Not all players placed cards");
+    }
+    
+    /**
+     * No player message
+     *
+     * @param Player $player
+     * @return GameTableException
+     */
+    public static function noPlayer(Player $player) : self
+    {
+        return new self("There is no player $player at the table");
     }
 }

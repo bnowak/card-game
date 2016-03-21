@@ -5,6 +5,7 @@ namespace Bnowak\CardGame\Tests;
 
 use Bnowak\CardGame\Card;
 use Bnowak\CardGame\FigureInterface;
+use Bnowak\CardGame\Player;
 use Bnowak\CardGame\SuitInterface;
 
 /**
@@ -105,5 +106,39 @@ class TestDataProvider
     public static function getCard4() : Card
     {
         return new Card(FigureInterface::FIGURE_4, SuitInterface::SUIT_CLUB);
+    }
+    
+    /**
+     * Create players array for tests
+     *
+     * @return Player[]
+     */
+    public static function getPlayersArray() : array
+    {
+        return array(
+            self::getPlayer1(),
+            self::getPlayer2(),
+            new Player('player 3'),
+        );
+    }
+    
+    /**
+     * Get player 1 for tests
+     *
+     * @return Player
+     */
+    public static function getPlayer1() : Player
+    {
+        return new Player('player 1');
+    }
+    
+    /**
+     * Get player 2 for tests
+     *
+     * @return Player
+     */
+    public static function getPlayer2() : Player
+    {
+        return new Player('player 2');
     }
 }

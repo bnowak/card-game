@@ -110,7 +110,7 @@ class GameTable
     public function countCardsSituatedByAllPlayers() : int
     {
         $cardsSituatedCount = 0;
-        foreach ($this->getPlayers() as $player) {
+        foreach ($this->players as $player) {
             $cardsSituatedCount += $this->countSituatedCardPlayer($player);
         }
         
@@ -264,11 +264,17 @@ class GameTable
     /**
      * Get internally player GameTable's key
      *
+     * @throws GameTableException
      * @param Player $player
      * @return int
      */
     private function getPlayerKey(Player $player) : int
     {
-        return array_search($player, $this->players, true);
+        $playerKey = array_search($player, $this->players, true);
+        if (false === $playerKey) {
+            throw GameTableException::noPlayer($player);
+        }
+        
+        return $playerKey;
     }
 }
