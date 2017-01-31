@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bnowak/card-game.svg?branch=master)](https://travis-ci.org/bnowak/card-game)
+
 Card Game
 =========
 
